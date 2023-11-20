@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcServer";
+
+package log;
+
+service Logger {
+  rpc GetRTAInfo (InfoRequest) returns (DefenitionReply);
+}
+
+message InfoRequest {
+  string info = 1;
+}
+
+message DefenitionReply {
+  string defenition = 1;
+}

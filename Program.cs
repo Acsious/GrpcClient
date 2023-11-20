@@ -7,10 +7,10 @@ class Program
     static async Task Main(string[] args)
     {
         using var channel = GrpcChannel.ForAddress("http://localhost:5000");
-        var client = new Greeter.GreeterClient(channel);
+        var client = new Logger.LoggerClient(channel);
 
-        var reply = await client.SayHelloAsync(new HelloRequest() { Name = "World" });
-        Console.WriteLine("Hello " + reply.Message);
+        var reply = await client.GetRTAInfoAsync(new InfoRequest() { Info = "Перекресток улиц Кирова и Свердлова. " });
+        Console.WriteLine("Дорожное проишествие: " + reply.Defenition);
         Console.ReadKey();
     }
 }
